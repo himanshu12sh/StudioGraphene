@@ -13,10 +13,15 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taskma
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: [
+      "http://localhost:3000",
+      "https://studio-graphene-kappa.vercel.app"
+    ],
     credentials: true,
   })
-);app.use(express.json());
+);
+
+app.use(express.json());
 connectDB();
 
 app.use('/api/tasks', taskRoutes);
