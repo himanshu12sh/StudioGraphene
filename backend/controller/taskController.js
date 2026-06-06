@@ -16,7 +16,7 @@ export const getTasks = async (req, res) => {
       ];
     }
 
-    const tasks = await Task.find(query).sort({ order: 1, createdAt: -1 });
+    const tasks = await Task.find(query).sort({createdAt: -1 , order: 1});
 
     const activeCount = await Task.countDocuments({ status: 'active' });
     const completedCount = await Task.countDocuments({ status: 'completed' });
@@ -42,14 +42,14 @@ export const createTask = async (req, res) => {
     }
 
     const lastTask = await Task.findOne().sort({ order: -1 });
-    const newOrder = lastTask ? lastTask.order + 1 : 0;
+    // const newOrder = lastTask ? lastTask.order + 1 : 0;
 
     const task = new Task({
       title: title.trim(),
       description: description ? description.trim() : undefined,
       dueDate: dueDate ? new Date(dueDate) : undefined,
       status: 'active',
-      order: newOrder
+      order: 0
     });
 
     const savedTask = await task.save();
