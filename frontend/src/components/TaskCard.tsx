@@ -91,7 +91,6 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete }: TaskCardP
           </div>
         </div>
 
-        {/* Action buttons */}
         <div className="flex items-center gap-1 flex-shrink-0">
           <button
             onClick={() => onToggle(task._id)}

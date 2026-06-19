@@ -16,7 +16,7 @@ export interface TasksResponse {
 }
 
 export const taskService = {
-  // Get tasks with optional filtering and search
+
   getTasks: async (status: string = 'all', search: string = ''): Promise<TasksResponse> => {
     const params = new URLSearchParams();
     if (status !== 'all') params.append('status', status);

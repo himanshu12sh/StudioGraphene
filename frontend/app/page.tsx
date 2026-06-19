@@ -220,7 +220,6 @@ export default function Home() {
         task={editingTask}
       />
 
-      {/* Delete Confirmation Dialog */}
       <ConfirmDialog
         isOpen={!!deletingTaskId}
         title="Delete Task"

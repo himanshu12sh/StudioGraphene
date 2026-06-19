@@ -42,14 +42,14 @@ export const createTask = async (req, res) => {
     }
 
     const lastTask = await Task.findOne().sort({ order: -1 });
-    // const newOrder = lastTask ? lastTask.order + 1 : 0;
+    const newOrder = lastTask ? lastTask.order + 1 : 0;
 
     const task = new Task({
       title: title.trim(),
       description: description ? description.trim() : undefined,
       dueDate: dueDate ? new Date(dueDate) : undefined,
       status: 'active',
-      order: 0
+      order: newOrder
     });
 
     const savedTask = await task.save();
